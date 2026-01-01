@@ -11,15 +11,17 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #fff8f3;
+  background:
+    radial-gradient(circle at top, #fff3e6, #f2d7b6);
   color: #3a2a1a;
 }
 
+/* HEADER */
 header {
-  background: #6b1f1f;
+  background: linear-gradient(135deg, #6b1f1f, #8b2e2e);
   color: #fff;
   text-align: center;
-  padding: 30px 15px;
+  padding: 35px 15px;
 }
 
 header h1 {
@@ -32,8 +34,9 @@ header p {
   opacity: 0.9;
 }
 
+/* SECTIONS */
 section {
-  padding: 30px 20px;
+  padding: 35px 20px;
   max-width: 1100px;
   margin: auto;
 }
@@ -45,9 +48,14 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* SERVICES */
 .services ul {
   list-style: none;
   padding: 0;
+}
+
+.services li {
+  margin-bottom: 8px;
 }
 
 .services li::before {
@@ -55,29 +63,58 @@ h2 {
   color: #c89b63;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-}
-
-.gallery img {
+/* SLIDESHOW */
+.slideshow {
+  position: relative;
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  background: #000;
 }
 
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* CONTACT */
 .contact {
   background: #f6e8db;
   border-radius: 15px;
   padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 15px;
+  padding: 18px;
   font-size: 0.85rem;
   opacity: 0.7;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 </style>
 </head>
@@ -101,13 +138,13 @@ footer {
 
 <section>
   <h2>Our Works</h2>
-  <div class="gallery">
-    <!-- ADD NEW IMAGES HERE -->
-    <img src="assets/images/work1.jpeg">
-    <img src="assets/images/work2.jpeg">
-    <img src="assets/images/work3.jpeg">
-    <img src="assets/images/work4.jpeg">
-    <img src="assets/images/work5.jpeg">
+
+  <div class="slideshow">
+    <img class="slide active" src="assets/images/work1.jpeg">
+    <img class="slide" src="assets/images/work2.jpeg">
+    <img class="slide" src="assets/images/work3.jpeg">
+    <img class="slide" src="assets/images/work4.jpeg">
+    <img class="slide" src="assets/images/work5.jpeg">
   </div>
 </section>
 
@@ -117,7 +154,7 @@ footer {
     📧 <b>Email:</b> sindhukarthick15@gmail.com<br><br>
     📞 <b>Phone:</b> 8610804699<br><br>
     📍 <b>Address:</b> Old Pallavaram, Chennai – 600117<br><br>
-    📸 <b>Instagram:</b> 
+    📸 <b>Instagram:</b>
     <a href="https://instagram.com/sindhu_aari_designer" target="_blank">
       @sindhu_aari_designer
     </a>
@@ -127,6 +164,21 @@ footer {
 <footer>
   © Sindhu Aari Designer
 </footer>
+
+<a class="whatsapp" href="https://wa.me/918610804699" target="_blank">
+  💬 WhatsApp
+</a>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}, 3000);
+</script>
 
 </body>
 </html>
