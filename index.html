@@ -5,23 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sindhu Aari Designer</title>
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-774LD959TT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-774LD959TT');
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background:
-    radial-gradient(circle at top, #fff3e6, #f2d7b6);
   color: #3a2a1a;
+
+  background:
+    radial-gradient(circle at top left, rgba(255,215,160,0.35), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(200,155,99,0.35), transparent 40%),
+    linear-gradient(135deg, #fff6ec, #f3ddc4);
 }
+
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #6b1f1f, #8b2e2e);
+  background: linear-gradient(
+    135deg,
+    #6b1f1f,
+    #8b2e2e,
+    #c89b63
+  );
   color: #fff;
   text-align: center;
-  padding: 35px 15px;
+  padding: 40px 15px;
 }
 
 header h1 {
@@ -54,10 +72,6 @@ h2 {
   padding: 0;
 }
 
-.services li {
-  margin-bottom: 8px;
-}
-
 .services li::before {
   content: "✿ ";
   color: #c89b63;
@@ -67,26 +81,73 @@ h2 {
 .slideshow {
   position: relative;
   width: 100%;
-  height: 340px;
+  height: 360px;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
   background: #000;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.3);
 }
 
 .slide {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* 👈 KEY CHANGE */
-  background: #000;      /* elegant background for empty space */
+  object-fit: contain;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+  transition: opacity 0.8s ease;
 }
-
 
 .slide.active {
   opacity: 1;
+}
+
+/* NAV BUTTONS */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* DOTS */
+.dots {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
+}
+.dot {
+  height: 9px;
+  width: 9px;
+  margin: 0 4px;
+  background: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+.dot.active {
+  background: #c89b63;
+}
+
+/* GALLERY GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* CONTACT */
@@ -94,7 +155,17 @@ h2 {
   background: #f6e8db;
   border-radius: 15px;
   padding: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* INSTAGRAM CTA */
+.insta-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #c13584;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
 }
 
 /* FOOTER */
@@ -105,7 +176,7 @@ footer {
   opacity: 0.7;
 }
 
-/* WHATSAPP BUTTON */
+/* WHATSAPP */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -115,8 +186,6 @@ footer {
   padding: 14px 18px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 </style>
 </head>
@@ -139,47 +208,92 @@ footer {
 </section>
 
 <section>
-  <h2>Our Works</h2>
+<h2>Our Works</h2>
 
-  <div class="slideshow">
-    <img class="slide active" src="assets/images/work1.jpeg">
-    <img class="slide" src="assets/images/work2.jpeg">
-    <img class="slide" src="assets/images/work3.jpeg">
-    <img class="slide" src="assets/images/work4.jpeg">
-    <img class="slide" src="assets/images/work5.jpeg">
-  </div>
+<div class="slideshow" id="slideshow">
+  <img class="slide active" src="assets/images/work1.jpeg">
+  <img class="slide" src="assets/images/work2.jpeg">
+  <img class="slide" src="assets/images/work3.jpeg">
+  <img class="slide" src="assets/images/work4.jpeg">
+  <img class="slide" src="assets/images/work5.jpeg">
+
+  <button class="nav prev">‹</button>
+  <button class="nav next">›</button>
+
+  <div class="dots"></div>
+</div>
 </section>
 
 <section>
-  <h2>Contact</h2>
-  <div class="contact">
-    📧 <b>Email:</b> sindhukarthick15@gmail.com<br><br>
-    📞 <b>Phone:</b> 8610804699<br><br>
-    📍 <b>Address:</b> Old Pallavaram, Chennai – 600117<br><br>
-    📸 <b>Instagram:</b>
-    <a href="https://instagram.com/sindhu_aari_designer" target="_blank">
-      @sindhu_aari_designer
-    </a>
-  </div>
+<h2>Gallery</h2>
+<div class="gallery">
+  <img src="assets/images/work1.jpeg">
+  <img src="assets/images/work2.jpeg">
+  <img src="assets/images/work3.jpeg">
+  <img src="assets/images/work4.jpeg">
+  <img src="assets/images/work5.jpeg">
+</div>
 </section>
 
-<footer>
-  © Sindhu Aari Designer
-</footer>
-
-<a class="whatsapp" href="https://wa.me/918610804699" target="_blank">
-  💬 WhatsApp
+<section>
+<h2>Contact</h2>
+<div class="contact">
+📧 sindhukarthick15@gmail.com<br><br>
+📞 8610804699<br><br>
+📍 Old Pallavaram, Chennai – 600117<br><br>
+<a class="insta-btn" href="https://instagram.com/sindhu_aari_designer" target="_blank">
+📸 View Instagram
 </a>
+</div>
+</section>
+
+<footer>© Sindhu Aari Designer</footer>
+
+<a class="whatsapp" href="https://wa.me/918610804699" target="_blank">💬 WhatsApp</a>
 
 <script>
 let slides = document.querySelectorAll(".slide");
+let dotsContainer = document.querySelector(".dots");
 let index = 0;
+let timer;
 
-setInterval(() => {
+slides.forEach((_, i) => {
+  let dot = document.createElement("span");
+  dot.classList.add("dot");
+  if (i === 0) dot.classList.add("active");
+  dot.onclick = () => goTo(i);
+  dotsContainer.appendChild(dot);
+});
+
+let dots = document.querySelectorAll(".dot");
+
+function showSlide(i) {
   slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
+  dots[index].classList.remove("active");
+  index = i;
   slides[index].classList.add("active");
-}, 3000);
+  dots[index].classList.add("active");
+
+  gtag('event', 'slide_view', { slide: index + 1 });
+}
+
+function next() { showSlide((index + 1) % slides.length); }
+function prev() { showSlide((index - 1 + slides.length) % slides.length); }
+function goTo(i) { showSlide(i); }
+
+document.querySelector(".next").onclick = next;
+document.querySelector(".prev").onclick = prev;
+
+function start() {
+  timer = setInterval(next, 3000);
+}
+function stop() {
+  clearInterval(timer);
+}
+
+start();
+document.getElementById("slideshow").addEventListener("mouseenter", stop);
+document.getElementById("slideshow").addEventListener("mouseleave", start);
 </script>
 
 </body>
