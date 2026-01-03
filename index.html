@@ -8,38 +8,63 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-774LD959TT"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-774LD959TT');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-774LD959TT');
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --bg-main: #fff6ec;
+  --bg-card: #f6e8db;
+  --text-main: #3a2a1a;
+  --accent: #c89b63;
+  --header-grad: linear-gradient(135deg, #6b1f1f, #8b2e2e, #c89b63);
+}
+
+body.dark {
+  --bg-main: #1b1b1b;
+  --bg-card: #2a2a2a;
+  --text-main: #eee;
+  --accent: #d4af37;
+  --header-grad: linear-gradient(135deg, #111, #222, #444);
+}
+
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  color: #3a2a1a;
+  color: var(--text-main);
 
+  /* 🧵 AARI THREAD BACKGROUND */
   background:
-    radial-gradient(circle at top left, rgba(255,215,160,0.35), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(200,155,99,0.35), transparent 40%),
-    linear-gradient(135deg, #fff6ec, #f3ddc4);
+    repeating-radial-gradient(
+      circle at center,
+      rgba(200,155,99,0.25) 0 1px,
+      transparent 1px 12px
+    ),
+    linear-gradient(135deg, var(--bg-main), #f3ddc4);
+  transition: 0.3s;
 }
-
 
 /* HEADER */
 header {
-  background: linear-gradient(
-    135deg,
-    #6b1f1f,
-    #8b2e2e,
-    #c89b63
-  );
+  background: var(--header-grad);
   color: #fff;
   text-align: center;
   padding: 40px 15px;
+  position: relative;
+}
+
+header img {
+  width: 160px;   /* ← change this number */
+  max-width: 90%;
+  margin-bottom: 12px;
 }
 
 header h1 {
@@ -52,6 +77,19 @@ header p {
   opacity: 0.9;
 }
 
+/* THEME BUTTON */
+.theme-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 /* SECTIONS */
 section {
   padding: 35px 20px;
@@ -61,20 +99,16 @@ section {
 
 h2 {
   font-family: 'Playfair Display', serif;
-  border-bottom: 2px solid #c89b63;
+  border-bottom: 2px solid var(--accent);
   display: inline-block;
   margin-bottom: 20px;
 }
 
 /* SERVICES */
-.services ul {
-  list-style: none;
-  padding: 0;
-}
-
+.services ul { list-style: none; padding: 0; }
 .services li::before {
   content: "✿ ";
-  color: #c89b63;
+  color: var(--accent);
 }
 
 /* SLIDESHOW */
@@ -96,12 +130,8 @@ h2 {
   opacity: 0;
   transition: opacity 0.8s ease;
 }
+.slide.active { opacity: 1; }
 
-.slide.active {
-  opacity: 1;
-}
-
-/* NAV BUTTONS */
 .nav {
   position: absolute;
   top: 50%;
@@ -131,33 +161,28 @@ h2 {
   background: #bbb;
   border-radius: 50%;
   display: inline-block;
-  cursor: pointer;
 }
-.dot.active {
-  background: #c89b63;
-}
+.dot.active { background: var(--accent); }
 
-/* GALLERY GRID */
+/* GALLERY */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 15px;
 }
-
 .gallery img {
   width: 100%;
   border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* CONTACT */
 .contact {
-  background: #f6e8db;
+  background: var(--bg-card);
   border-radius: 15px;
   padding: 25px;
 }
 
-/* INSTAGRAM CTA */
+/* INSTAGRAM */
 .insta-btn {
   display: inline-block;
   margin-top: 15px;
@@ -187,39 +212,59 @@ footer {
   border-radius: 50px;
   text-decoration: none;
 }
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.5rem; }
+  .slideshow { height: 260px; }
+  header img {
+  width: 200px;
+}
+}
 </style>
 </head>
 
 <body>
 
 <header>
+  <!-- Optional Logo -->
+  <img src="assets/images/logo.png" alt="Sindhu Aari Designer">
   <h1>Sindhu Aari Designer</h1>
   <p>Every stitch tells a story</p>
+  <button class="theme-btn" onclick="toggleTheme()">🌙 Theme</button>
 </header>
 
 <section class="services">
-  <h2>Services</h2>
-  <ul>
-    <li>Aari Work</li>
-    <li>Bridal Blouses</li>
-    <li>Normal & Designer Stitching</li>
-    <li>Alterations</li>
-  </ul>
+<h2>Services</h2>
+<ul>
+  <li>Aari Work</li>
+  <li>Bridal Blouses</li>
+  <li>Normal & Designer Stitching</li>
+  <li>Alterations</li>
+</ul>
 </section>
 
 <section>
 <h2>Our Works</h2>
-
 <div class="slideshow" id="slideshow">
   <img class="slide active" src="assets/images/work1.jpeg">
   <img class="slide" src="assets/images/work2.jpeg">
   <img class="slide" src="assets/images/work3.jpeg">
   <img class="slide" src="assets/images/work4.jpeg">
   <img class="slide" src="assets/images/work5.jpeg">
-
+  <img class="slide" src="assets/images/work6.jpeg">
+  <img class="slide" src="assets/images/work6.jpeg">
+  <img class="slide" src="assets/images/work7.jpeg">
+  <img class="slide" src="assets/images/work8.jpeg">
+  <img class="slide" src="assets/images/work9.jpg">
+  <img class="slide" src="assets/images/work10.jpeg">
+   <img class="slide"  src="assets/images/work11.jpg">
+  <img class="slide" src="assets/images/work12.jpeg">
+  <img class="slide" src="assets/images/work13.jpeg">
+   <img class="slide" src="assets/images/work14.jpeg">
+  
   <button class="nav prev">‹</button>
   <button class="nav next">›</button>
-
   <div class="dots"></div>
 </div>
 </section>
@@ -232,6 +277,15 @@ footer {
   <img src="assets/images/work3.jpeg">
   <img src="assets/images/work4.jpeg">
   <img src="assets/images/work5.jpeg">
+  <img src="assets/images/work6.jpeg">
+  <img src="assets/images/work7.jpeg">
+  <img src="assets/images/work8.jpeg">
+  <img src="assets/images/work9.jpg">
+  <img src="assets/images/work10.jpeg">
+   <img src="assets/images/work11.jpg">
+  <img src="assets/images/work12.jpeg">
+  <img src="assets/images/work13.jpeg">
+   <img src="assets/images/work14.jpeg">
 </div>
 </section>
 
@@ -248,23 +302,19 @@ footer {
 </section>
 
 <footer>© Sindhu Aari Designer</footer>
-
 <a class="whatsapp" href="https://wa.me/918610804699" target="_blank">💬 WhatsApp</a>
 
 <script>
 let slides = document.querySelectorAll(".slide");
 let dotsContainer = document.querySelector(".dots");
 let index = 0;
-let timer;
 
 slides.forEach((_, i) => {
   let dot = document.createElement("span");
-  dot.classList.add("dot");
-  if (i === 0) dot.classList.add("active");
-  dot.onclick = () => goTo(i);
+  dot.className = "dot" + (i === 0 ? " active" : "");
+  dot.onclick = () => showSlide(i);
   dotsContainer.appendChild(dot);
 });
-
 let dots = document.querySelectorAll(".dot");
 
 function showSlide(i) {
@@ -273,27 +323,14 @@ function showSlide(i) {
   index = i;
   slides[index].classList.add("active");
   dots[index].classList.add("active");
-
-  gtag('event', 'slide_view', { slide: index + 1 });
 }
+document.querySelector(".next").onclick = () => showSlide((index+1)%slides.length);
+document.querySelector(".prev").onclick = () => showSlide((index-1+slides.length)%slides.length);
+setInterval(()=>showSlide((index+1)%slides.length),3000);
 
-function next() { showSlide((index + 1) % slides.length); }
-function prev() { showSlide((index - 1 + slides.length) % slides.length); }
-function goTo(i) { showSlide(i); }
-
-document.querySelector(".next").onclick = next;
-document.querySelector(".prev").onclick = prev;
-
-function start() {
-  timer = setInterval(next, 3000);
+function toggleTheme(){
+  document.body.classList.toggle("dark");
 }
-function stop() {
-  clearInterval(timer);
-}
-
-start();
-document.getElementById("slideshow").addEventListener("mouseenter", stop);
-document.getElementById("slideshow").addEventListener("mouseleave", start);
 </script>
 
 </body>
