@@ -1,337 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sindhu Aari Designer</title>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-774LD959TT"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-774LD959TT');
-</script>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg-main: #fff6ec;
-  --bg-card: #f6e8db;
-  --text-main: #3a2a1a;
-  --accent: #c89b63;
-  --header-grad: linear-gradient(135deg, #6b1f1f, #8b2e2e, #c89b63);
-}
-
-body.dark {
-  --bg-main: #1b1b1b;
-  --bg-card: #2a2a2a;
-  --text-main: #eee;
-  --accent: #d4af37;
-  --header-grad: linear-gradient(135deg, #111, #222, #444);
-}
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-main);
-
-  /* 🧵 AARI THREAD BACKGROUND */
-  background:
-    repeating-radial-gradient(
-      circle at center,
-      rgba(200,155,99,0.25) 0 1px,
-      transparent 1px 12px
-    ),
-    linear-gradient(135deg, var(--bg-main), #f3ddc4);
-  transition: 0.3s;
-}
-
-/* HEADER */
-header {
-  background: var(--header-grad);
-  color: #fff;
-  text-align: center;
-  padding: 40px 15px;
-  position: relative;
-}
-
-header img {
-  width: 160px;   /* ← change this number */
-  max-width: 90%;
-  margin-bottom: 12px;
-}
-
-header h1 {
-  font-family: 'Playfair Display', serif;
-  margin: 0;
-}
-
-header p {
-  font-style: italic;
-  opacity: 0.9;
-}
-
-/* THEME BUTTON */
-.theme-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(255,255,255,0.2);
-  border: none;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* SECTIONS */
-section {
-  padding: 35px 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-h2 {
-  font-family: 'Playfair Display', serif;
-  border-bottom: 2px solid var(--accent);
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-/* SERVICES */
-.services ul { list-style: none; padding: 0; }
-.services li::before {
-  content: "✿ ";
-  color: var(--accent);
-}
-
-/* SLIDESHOW */
-.slideshow {
-  position: relative;
-  width: 100%;
-  height: 360px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.3);
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-.slide.active { opacity: 1; }
-
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  font-size: 22px;
-  padding: 8px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-.prev { left: 10px; }
-.next { right: 10px; }
-
-/* DOTS */
-.dots {
-  position: absolute;
-  bottom: 12px;
-  width: 100%;
-  text-align: center;
-}
-.dot {
-  height: 9px;
-  width: 9px;
-  margin: 0 4px;
-  background: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-.dot.active { background: var(--accent); }
-
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-}
-.gallery img {
-  width: 100%;
-  border-radius: 14px;
-}
-
-/* CONTACT */
-.contact {
-  background: var(--bg-card);
-  border-radius: 15px;
-  padding: 25px;
-}
-
-/* INSTAGRAM */
-.insta-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #c13584;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 18px;
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-/* WHATSAPP */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  padding: 14px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-}
-
-/* 📱 MOBILE */
-@media (max-width: 600px) {
-  header h1 { font-size: 1.5rem; }
-  .slideshow { height: 260px; }
-  header img {
-  width: 200px;
-}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sindhu Aari Designer - Every stitch tells a story. Professional aari embroidery, bridal blouses, and designer stitching services.">
+    <meta name="keywords" content="aari work, embroidery, bridal blouses, designer stitching, alterations, Chennai">
+    <title>Sindhu Aari Designer - Every Stitch Tells a Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Sindhu Aari Designer Logo" class="logo-img">
+                    <span class="logo-text">Sindhu Aari Designer</span>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#works">Our Works</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<header>
-  <!-- Optional Logo -->
-  <img src="assets/images/logo.png" alt="Sindhu Aari Designer">
-  <h1>Sindhu Aari Designer</h1>
-  <p>Every stitch tells a story</p>
-  <button class="theme-btn" onclick="toggleTheme()">🌙 Theme</button>
-</header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="images/logo.png" alt="Sindhu Aari Designer Logo">
+                </div>
+                <h1 class="hero-title">Sindhu Aari Designer</h1>
+                <p class="hero-subtitle">Every stitch tells a story</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-<section class="services">
-<h2>Services</h2>
-<ul>
-  <li>Aari Work</li>
-  <li>Bridal Blouses</li>
-  <li>Normal & Designer Stitching</li>
-  <li>Alterations</li>
-</ul>
-</section>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Services</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Crafting elegance with traditional artistry</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-thread"></i>
+                    </div>
+                    <h3>Aari Work</h3>
+                    <p>Exquisite traditional aari embroidery with intricate designs and patterns that bring your garments to life.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Bridal Blouses</h3>
+                    <p>Stunning bridal blouses with detailed embroidery work to make your special day even more memorable.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Designer Stitching</h3>
+                    <p>Custom designer stitching and tailoring services for both normal wear and special occasions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ruler"></i>
+                    </div>
+                    <h3>Alterations</h3>
+                    <p>Professional alteration services to ensure perfect fit and finish for all your garments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-<h2>Our Works</h2>
-<div class="slideshow" id="slideshow">
-  <img class="slide active" src="assets/images/work1.jpeg">
-  <img class="slide" src="assets/images/work2.jpeg">
-  <img class="slide" src="assets/images/work3.jpeg">
-  <img class="slide" src="assets/images/work4.jpeg">
-  <img class="slide" src="assets/images/work5.jpeg">
-  <img class="slide" src="assets/images/work6.jpeg">
-  <img class="slide" src="assets/images/work6.jpeg">
-  <img class="slide" src="assets/images/work7.jpeg">
-  <img class="slide" src="assets/images/work8.jpeg">
-  <img class="slide" src="assets/images/work9.jpg">
-  <img class="slide" src="assets/images/work10.jpeg">
-   <img class="slide"  src="assets/images/work11.jpg">
-  <img class="slide" src="assets/images/work12.jpeg">
-  <img class="slide" src="assets/images/work13.jpeg">
-   <img class="slide" src="assets/images/work14.jpeg">
-  
-  <button class="nav prev">‹</button>
-  <button class="nav next">›</button>
-  <div class="dots"></div>
-</div>
-</section>
+    <!-- Our Works Section -->
+    <section id="works" class="works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Works</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">A showcase of our finest creations</p>
+            </div>
+            <div class="carousel">
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" aria-label="Previous">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <img src="images/work1.jpeg" alt="Aari embroidery work 1">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/work2.jpeg" alt="Aari embroidery work 2">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/work3.jpeg" alt="Aari embroidery work 3">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/work4.jpeg" alt="Aari embroidery work 4">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/work5.jpeg" alt="Aari embroidery work 5">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" aria-label="Next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators"></div>
+            </div>
+        </div>
+    </section>
 
-<section>
-<h2>Gallery</h2>
-<div class="gallery">
-  <img src="assets/images/work1.jpeg">
-  <img src="assets/images/work2.jpeg">
-  <img src="assets/images/work3.jpeg">
-  <img src="assets/images/work4.jpeg">
-  <img src="assets/images/work5.jpeg">
-  <img src="assets/images/work6.jpeg">
-  <img src="assets/images/work7.jpeg">
-  <img src="assets/images/work8.jpeg">
-  <img src="assets/images/work9.jpg">
-  <img src="assets/images/work10.jpeg">
-   <img src="assets/images/work11.jpg">
-  <img src="assets/images/work12.jpeg">
-  <img src="assets/images/work13.jpeg">
-   <img src="assets/images/work14.jpeg">
-</div>
-</section>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Explore our collection of beautiful designs</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/work1.jpeg" alt="Aari work design 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work2.jpeg" alt="Aari work design 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work3.jpeg" alt="Aari work design 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work4.jpeg" alt="Aari work design 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work6.jpeg" alt="Aari work design 5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work7.jpeg" alt="Aari work design 6">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work8.jpeg" alt="Aari work design 7">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work9.jpeg" alt="Aari work design 8">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work10.jpeg" alt="Aari work design 9">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work11.jpeg" alt="Aari work design 9">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work12.jpeg" alt="Aari work design 9">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
 
-<section>
-<h2>Contact</h2>
-<div class="contact">
-📧 sindhukarthick15@gmail.com<br><br>
-📞 8610804699<br><br>
-📍 Old Pallavaram, Chennai – 600117<br><br>
-<a class="insta-btn" href="https://instagram.com/sindhu_aari_designer" target="_blank">
-📸 View Instagram
-</a>
-</div>
-</section>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work13.jpeg" alt="Aari work design 9">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/work14.jpeg" alt="Aari work design 9">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>© Sindhu Aari Designer</footer>
-<a class="whatsapp" href="https://wa.me/918610804699" target="_blank">💬 WhatsApp</a>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Us</h2>
+                    <div class="title-underline"></div>
+                    <p>Welcome to Sindhu Aari Designer, where tradition meets elegance. With years of expertise in aari embroidery and designer stitching, we bring your vision to life with precision and artistry.</p>
+                    <p>Our passion for creating beautiful, intricate designs is reflected in every stitch. From bridal blouses to everyday wear, we ensure that each piece tells its own unique story.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Craftsmanship</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Custom Designs</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Quality Materials</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Timely Delivery</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/about.jpeg" alt="About Sindhu Aari Designer">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-let slides = document.querySelectorAll(".slide");
-let dotsContainer = document.querySelector(".dots");
-let index = 0;
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Get in touch with us for your custom designs</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+91 86108 04699</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>sindhuaaridesigner@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Chennai, Tamil Nadu</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sindhu_aari_designer/" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send/?phone=918610804699&text&type=phone_number&app_absent=0" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" required placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-slides.forEach((_, i) => {
-  let dot = document.createElement("span");
-  dot.className = "dot" + (i === 0 ? " active" : "");
-  dot.onclick = () => showSlide(i);
-  dotsContainer.appendChild(dot);
-});
-let dots = document.querySelectorAll(".dot");
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918610804699" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
 
-function showSlide(i) {
-  slides[index].classList.remove("active");
-  dots[index].classList.remove("active");
-  index = i;
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
-}
-document.querySelector(".next").onclick = () => showSlide((index+1)%slides.length);
-document.querySelector(".prev").onclick = () => showSlide((index-1+slides.length)%slides.length);
-setInterval(()=>showSlide((index+1)%slides.length),3000);
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sindhu Aari Designer</h3>
+                    <p>Every stitch tells a story</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#works">Our Works</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Aari Work</li>
+                        <li>Bridal Blouses</li>
+                        <li>Designer Stitching</li>
+                        <li>Alterations</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sindhu Aari Designer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-function toggleTheme(){
-  document.body.classList.toggle("dark");
-}
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
